@@ -7,7 +7,7 @@
     @if(count($jobs) > 0)
         <ul>
             @foreach($jobs as $job)
-               <li>{!! link_to_route ('tasklists.show', $job->id, ['id' => $job->id]) !!} : {{ $job->content }}</li>
+               <li>{!! link_to_route ('tasklists.show', $job->id, ['id' => $job->id]) !!} : {{ $job->status }} > {{ $job->content }}</li>
             @endforeach
         </ul>
     @endif

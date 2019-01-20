@@ -6,6 +6,9 @@
     
     {!! Form::model($job, [ 'route' => [ 'tasklists.update', $job->id ], 'method' => 'put' ]) !!}
 
+        {!! Form::label('status', 'ステータス：') !!}
+        {!! Form::text('status') !!}
+        
         {!! Form::label('content', 'タスク：') !!}
         {!! Form::text('content') !!}
         
