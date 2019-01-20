@@ -6,5 +6,11 @@
     
     <p>{{ $job->content}}</p>
 
+    {!! link_to_route('tasklists.edit', 'このタスク編集', ['id' => $job->id]) !!}
+
+    {!! Form::model($job, ['route' => ['tasklists.destroy', $job->id], 'method' => 'delete']) !!}
+        {!! Form::submit('削除') !!}
+    {!! Form::close() !!}
+
 
 @endsection
