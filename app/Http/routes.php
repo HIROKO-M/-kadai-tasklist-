@@ -17,6 +17,14 @@ Route::get('/', function () {
 */
 Route::get('/', 'TasklistController@index');
 
+/* 'taslists' はルーティングに設定される
+　　=>　URLに利用される
+　　=>　index.php 内で他のphpを呼び出す際(例 link_to_route ('tasklists.show'…　）
+　　　　と同一になっている必要がある)
+*/
+Route::resource('tasklists', 'TasklistController');
+
+
 // ユーザ登録
 Route::get('signup', 'Auth\AuthController@getRegister')->name('signup.get');
 Route::post('signup', 'Auth\AuthController@postRegister')->name('signup.post');
@@ -28,12 +36,9 @@ Route::post('login', 'Auth\AuthController@postLogin')->name('login.post');
 Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 
 
+// ログイン認証付きのルーティング
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+});
 
-
-/* 'taslists' はルーティングに設定される
-　　=>　URLに利用される
-　　=>　index.php 内で他のphpを呼び出す際(例 link_to_route ('tasklists.show'…　）
-　　　　と同一になっている必要がある)
-*/
-Route::resource('tasklists', 'TasklistController');
 
