@@ -15,9 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-
-
 Route::get('/', 'TasklistController@index');
+
+// ユーザ登録
+Route::get('signup', 'Auth\AuthController@getRegister')->name('signup.get');
+Route::post('signup', 'Auth\AuthController@postRegister')->name('signup.post');
+
+
+
+
+
 
 /* 'taslists' はルーティングに設定される
 　　=>　URLに利用される
