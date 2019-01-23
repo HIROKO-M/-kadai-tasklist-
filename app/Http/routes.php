@@ -15,9 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/', 'TasklistController@index');
+/*Route::get('/', 'TasklistController@index'); */
+Route::get('/', 'WelcomeController@index');
 
-/* 'taslists' はルーティングに設定される
+/* 'tasklists' はルーティングに設定される
 　　=>　URLに利用される
 　　=>　index.php 内で他のphpを呼び出す際(例 link_to_route ('tasklists.show'…　）
 　　　　と同一になっている必要がある)
@@ -39,6 +40,7 @@ Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 // ログイン認証付きのルーティング
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource('tasklists', 'TasklistController', ['only' => ['store', 'destroy']]);
 });
 
 
