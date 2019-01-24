@@ -39,8 +39,7 @@ Route::get('logout', 'Auth\AuthController@getLogout')->name('logout.get');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-    Route::resource('tasklists', 'TasklistController');
-
+    Route::resource('tasklists', 'TasklistController', ['only' => ['create', 'store', 'destroy']]);
 });
     /* 'tasklists' はルーティングに設定される
 　　=>　URLに利用される

@@ -8,7 +8,7 @@
         <div class="ｃol-sx-12 col-sm-offset-2 col-sm-8 col-lg-offset-3 col-log-6"> 
 
 
-            {!! Form::model($job, ['route' => 'tasklists.store']) !!}
+            {!! Form::model($tasklist, ['route' => 'tasklists.store']) !!}
         
                 <div class="form-group">
                     {!! Form::label('status', 'ステータス：') !!}

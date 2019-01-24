@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\User;
+use App\Tasklists;
 
 class UsersController extends Controller
 {
@@ -16,7 +17,9 @@ class UsersController extends Controller
     {
         $users = User::paginate(10);
         
-        return view('users.index', ['users' => $users,]);
+        return view('users.index', [
+            'users' => $users,
+        ]);
     }
 
 

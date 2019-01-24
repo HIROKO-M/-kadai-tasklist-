@@ -16,13 +16,13 @@ class TasklistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+/*    public function index()
     {
         $tasks = Tasklist::all();
         
         return view('tasklists.index', [ 'jobs' => $tasks ]);
     }
-
+*/
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +32,7 @@ class TasklistController extends Controller
     {
         $tasks = new Tasklist;
         
-        return view('tasklists.create', ['job' => $tasks]);
+        return view('tasklists.create', ['tasklist' => $tasks]);
     }
 
     /**
@@ -60,7 +60,7 @@ class TasklistController extends Controller
             'content' => $request->content,
         ]);
         
-        return redirect('/tasklists');
+        return redirect('/');
         
     }
 
@@ -70,14 +70,14 @@ class TasklistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+/*    public function show($id)
     {
         
         $tasks = Tasklist::find($id);
 
         return view('tasklists.show', [ 'job' => $tasks, ]);
     }
-
+*/
     /**
      * Show the form for editing the specified resource.
      *
@@ -88,7 +88,7 @@ class TasklistController extends Controller
     {
         $tasks = Tasklist::find($id);
         
-        return view('tasklists.edit', ['job' => $tasks,]);
+        return view('tasklists.edit', ['tasklist' => $tasks,]);
     }
 
     /**
@@ -117,7 +117,7 @@ class TasklistController extends Controller
             'content' => $request->content,
         ]);
         
-        return redirect('/tasklists');
+        return redirect('/');
         
     }
 
