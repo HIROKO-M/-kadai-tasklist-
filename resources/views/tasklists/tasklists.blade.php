@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
 
 
     <h1>タスク一覧</h1>
@@ -30,6 +27,3 @@
 
     
  {!! link_to_route('tasklists.create', '新規タスク登録', null, ['class' => 'btn btn-primary']) !!}
-
-@endsection
-

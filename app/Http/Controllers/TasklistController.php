@@ -45,14 +45,22 @@ class TasklistController extends Controller
     {
         $this->validate($request, [                 // add for kadai2
                 'status' => 'required|max:10',
+                'content' => 'required|max:255',    // add
         ]);
         
+    /*
         $tasks = new Tasklist;
         $tasks -> status = $request -> status;      // add for kadai2
         $tasks -> content = $request -> content;
         $tasks -> save();
+    */
+        // add
+        $request->user()->tasklists()->create([
+            'status' => $request->status,
+            'content' => $request->content,
+        ]);
         
-        return redirect('/');
+        return redirect('/tasklists');
         
     }
 
@@ -94,14 +102,22 @@ class TasklistController extends Controller
     {
         $this->validate($request, [                 // add for kadai2
                 'status' => 'required|max:10',
+                'content' => 'required|max:255',    // add
         ]);
         
+    /*
         $tasks = Tasklist::find($id);
         $tasks -> status = $request -> status;      // add for kadai2
         $tasks -> content = $request -> content;
         $tasks -> save();
+    */    
+        // add
+        $request->user()->tasklists()->find($id)->update([
+            'status' => $request->status,
+            'content' => $request->content,
+        ]);
         
-        return redirect('/');
+        return redirect('/tasklists');
         
     }
 
@@ -113,10 +129,13 @@ class TasklistController extends Controller
      */
     public function destroy($id)
     {
-        $tasks = Tasklist::find($id);
-        $tasks -> delete();
+        $tasks = \App\Tasklist::find($id);
         
-        return redirect('/');
+        if(\Auth::user()-id === $tasklist->user_id){
+            $tasks -> delete();
+        }
+        
+        return redirect('/tasklists');
         
     }
 }

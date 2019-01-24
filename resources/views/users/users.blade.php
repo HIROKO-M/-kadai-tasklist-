@@ -10,9 +10,12 @@
                     <div>
                         {{ $user->name }}
                     </div>
+                    
+                    <!-- View profile は不要なので削除 -->
                     <div>
-                        <p>{!! link_to_route('users.show', 'View profile', ['id' => $user->id]) !!}</p>
+                        <p>{!! link_to_route('users.show', 'View tasks', ['id' => $user->id]) !!}</p>
                     </div>
+                     
                 </div>
             </li>
         @endforeach

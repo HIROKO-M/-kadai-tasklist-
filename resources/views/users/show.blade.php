@@ -18,7 +18,13 @@
         <div class="col-xs-8">
             <ul class="nav nav-tabs nav-justified">
                 <li><a href="#">TaskLists</a></li>
+                <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}">
+                    <a href="{{ route('users.show', ['id' => $user->id]) }}">TaskLists </a>
+                </li>
             </ul>
+            @if (count($tasklists) > 0)
+                    @include('tasklists.index', ['jobs' => $tasklists])
+            @endif
         </div>
     </div>
     
